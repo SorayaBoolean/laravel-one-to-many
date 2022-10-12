@@ -14,8 +14,12 @@ class EditPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('category_id')
-            ->constrained();
+            $table->unsignedBigInteger('category_id')->nullable()->after('slug');
+
+            $table->foreign('category_id')
+                    ->reference('id')
+                    ->on('categories')
+                    ->onDelete('set null');
         });
     }
 
@@ -27,7 +31,8 @@ class EditPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            
+            $table->dropForeign('category_id');
+            $table->dropColumn('category_id')
         });
     }
 }
