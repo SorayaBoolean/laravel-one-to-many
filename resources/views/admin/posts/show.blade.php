@@ -14,6 +14,10 @@
             <strong>Slug:</strong>
             <p>{{$post->slug}}</p>
         </div>
+        <div class="">
+            <strong>Category:</strong>
+            <p>{{($post->category)?$post->category->name:'-'}}</p>
+        </div>
     </div>
     <div class="container ">
         <a class="btn btn-outline-info my-2" href="{{route('admin.posts.index')}}">< Back</a>
