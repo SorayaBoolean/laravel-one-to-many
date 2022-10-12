@@ -29,6 +29,17 @@
                 </div>
             @enderror
         </div>
+
+        <div class=" form-group mb-3">
+            <label for="category_id" class="form-label">Category</label>
+            <select class="form-control" name="category_id" id="category_id">
+                <option value="">no category</option>
+
+                @foreach($categories as $category)
+                <option {{(old('category_id', $post->category_id)==$post->category_id)?'selected':''}} value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+        </div>
         
         
         </div>
