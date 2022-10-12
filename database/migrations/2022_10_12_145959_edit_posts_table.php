@@ -14,12 +14,8 @@ class EditPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id')->nullable()->after('slug');
-           
-            $table->foreign('category_id')
-                  ->foreign('id')
-                  ->on('categories')
-                  ->onDelete('set null');
+            $table->foreignId('category_id')
+            ->constrained();
         });
     }
 
