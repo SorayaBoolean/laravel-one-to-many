@@ -31,8 +31,8 @@ class EditPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign('category_id');
-            $table->dropColumn('category_id');
+            $table->dropForeign('posts_category_id_foreign');
+            $table->dropColumn('posts_category_id_foreign');
         });
     }
 }
